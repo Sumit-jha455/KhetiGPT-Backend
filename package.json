@@ -1,0 +1,45 @@
+{
+  "name": "khetigpt-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KhetiGPT - AI-Powered Personal Farming Assistant. Express + MongoDB + Gemini backend REST API.",
+  "type": "module",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "test": "node --test",
+    "test:watch": "nodemon --exec \"node --test tests/\""
+  },
+  "keywords": [
+    "khetigpt",
+    "agriculture",
+    "express",
+    "mongodb",
+    "gemini",
+    "academic-project"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^2.32.0",
+    "axios": "^1.21.1",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.10",
+    "express": "^4.22.3",
+    "express-rate-limit": "^8.7.4",
+    "express-validator": "^7.3.2",
+    "groq-sdk": "^1.6.0",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.24.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "supertest": "^7.3.2"
+  }
+}
