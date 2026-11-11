@@ -61,10 +61,15 @@ const ICON_MAP = {
 };
 
 /**
- * kelvinToCelsius - converts the Kelvin value OpenWeather returns into Celsius,
- * rounded to one decimal place.
+ * metricTemperature - normalizes the Celsius value returned by OpenWeather
+ * when the request uses units=metric.
  */
-const kelvinToCelsius = (kelvin) => Math.round(((Number(kelvin) ?? 0) - 273.15) * 10) / 10;
+const metricTemperature = (value) => {
+  const temperature = Number(value);
+  return Number.isFinite(temperature)
+    ? Math.round(temperature * 10) / 10
+    : null;
+};
 
 /**
  * mapIcon - returns the internal icon key for an OpenWeather icon code.
@@ -215,12 +220,12 @@ export const fetchCurrentWeather = async ({ city, lat, lon, units = "metric" } =
         lon: data.coord?.lon ?? null,
       },
       // Current temperature in °C.
-      temperature: kelvinToCelsius(main.temp),
+      temperature: metricTemperature(main.temp),
       // "Feels like" temperature in °C.
-      feelsLike: kelvinToCelsius(main.feels_like),
+      feelsLike: metricTemperature(main.feels_like),
       // Minimum and maximum of the current period.
-      tempMin: main.temp_min !== undefined ? kelvinToCelsius(main.temp_min) : null,
-      tempMax: main.temp_max !== undefined ? kelvinToCelsius(main.temp_max) : null,
+      tempMin: main.temp_min !== undefined ? metricTemperature(main.temp_min) : null,
+      tempMax: main.temp_max !== undefined ? metricTemperature(main.temp_max) : null,
       // Short condition label, e.g. "Clouds" -> "Cloudy".
       condition: weather.main ?? "Unknown",
       // Longer description, e.g. "few clouds".
@@ -341,9 +346,9 @@ export const fetchForecast = async ({ city, lat, lon, units = "metric" } = {}) =
       // Update the temperature extremes.
       if (entry.main?.temp !== undefined) {
         // Track the maximum.
-        bucket.high = Math.max(bucket.high, kelvinToCelsius(entry.main.temp));
+        bucket.high = Math.max(bucket.high, metricTemperature(entry.main.temp));
         // Track the minimum.
-        bucket.low = Math.min(bucket.low, kelvinToCelsius(entry.main.temp));
+        bucket.low = Math.min(bucket.low, metricTemperature(entry.main.temp));
       }
 
       // Accumulate humidity.

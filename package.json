@@ -2,7 +2,7 @@
   "name": "khetigpt-backend",
   "version": "1.0.0",
   "private": true,
-  "description": "KhetiGPT - AI-Powered Personal Farming Assistant. Express + MongoDB + Gemini backend REST API.",
+  "description": "KhetiGPT - AI-Powered Personal Farming Assistant. Express + MongoDB + Groq backend REST API.",
   "type": "module",
   "main": "src/server.js",
   "engines": {
@@ -19,7 +19,7 @@
     "agriculture",
     "express",
     "mongodb",
-    "gemini",
+    "groq",
     "academic-project"
   ],
   "license": "MIT",

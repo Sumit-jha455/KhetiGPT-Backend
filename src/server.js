@@ -79,7 +79,7 @@ const main = async () => {
     console.log("-------------------------------------------------------------");
   });
 
-  // Give the socket a generous timeout: the Gemini call can take a few seconds.
+  // Give the socket a generous timeout: the provider call can take a few seconds.
   server.timeout = 60000;
   // Keep the connection alive between requests.
   server.keepAliveTimeout = 65000;

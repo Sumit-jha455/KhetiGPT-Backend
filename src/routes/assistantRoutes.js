@@ -9,7 +9,7 @@
  *   GET    /api/assistant/meta     -> getAssistantMeta
  *
  * The chat endpoint is wrapped in the strict `aiLimiter` because every call
- * consumes Gemini API credits.
+ * consumes provider API credits.
  */
 
 import { Router } from "express";
@@ -47,7 +47,7 @@ router.get("/meta", optionalAuth, asyncHandler(getAssistantMeta));
  */
 router.post(
   "/chat",
-  // Strict limit: every call consumes Gemini API credits.
+  // Strict limit: every call consumes provider API credits.
   aiLimiter,
   // Personalisation and history need a user; anonymous calls are still allowed.
   optionalAuth,

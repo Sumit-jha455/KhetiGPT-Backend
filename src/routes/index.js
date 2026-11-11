@@ -62,15 +62,14 @@ healthRouter.get("/health", (_req, res) => {
         // Whether this dependency is required for a fully working system.
         required: true,
       },
-      // Gemini powers the AI assistant.
-     // Groq powers the AI assistant.
-     groq: {
-      status: isGroqConfigured() ? "configured" : "not-configured",
-      model: isGroqConfigured()
-        ? process.env.GROQ_MODEL || "openai/gpt-oss-20b"
-        : null,
-      required: false,
-    },
+      // Groq powers the AI assistant.
+      groq: {
+        status: isGroqConfigured() ? "configured" : "not-configured",
+        model: isGroqConfigured()
+          ? process.env.GROQ_MODEL || "openai/gpt-oss-20b"
+          : null,
+        required: false,
+      },
       // OpenWeather powers the weather module.
       openweather: {
         status: isWeatherConfigured() ? "configured" : "not-configured",
