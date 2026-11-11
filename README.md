@@ -3,14 +3,27 @@
 Node.js/Express REST API for KhetiGPT. The backend owns authentication,
 profile data, provider credentials, business rules, and safe response shaping.
 
+## Live Deployment
+
+- **Backend API:** [khetigpt-backend.onrender.com](https://khetigpt-backend.onrender.com)
+- **Health check:** [API health](https://khetigpt-backend.onrender.com/api/health)
+- **Frontend application:** [kheti-gpt-frontend.vercel.app](https://kheti-gpt-frontend.vercel.app)
+- **Backend repository:** [Sumit-jha455/KhetiGPT-Backend](https://github.com/Sumit-jha455/KhetiGPT-Backend)
+- **Frontend repository:** [Sumit-jha455/KhetiGPT-Frontend](https://github.com/Sumit-jha455/KhetiGPT-Frontend)
+
+The backend is hosted on **Render** and serves the frontend hosted on
+**Vercel**. All API routes are available below the `/api` prefix. The health
+endpoint reports the status of the backend dependencies.
+
 ## Tech stack
 
 - Node.js 18.17+
-- Express
+- Express.js
 - MongoDB Atlas with Mongoose
 - JWT, bcryptjs, HTTP-only cookies
 - Groq SDK for the assistant
 - Axios/OpenWeather integration
+- OpenWeather API
 - express-validator, Helmet, CORS, rate limiting
 - Node built-in test runner and Supertest
 
@@ -47,6 +60,10 @@ commit or expose those values.
 - `AI_RATE_LIMIT_MAX_REQUESTS`
 
 The browser never receives provider credentials.
+
+For deployment, configure these variable names in the Render service
+environment. Use the platform's secret management for sensitive values and
+never place secret values in this README.
 
 ## API routes
 
